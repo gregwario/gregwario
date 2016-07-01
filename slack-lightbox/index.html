@@ -1,0 +1,67 @@
+<!doctype>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="charset" value="UTF-8" />
+	<title>Slack Lightbox</title>
+	<link rel="stylesheet" href="./styles.css" />
+	<link rel="stylesheet" href="./loading.css" />
+	<meta name="viewport" content="width=device-width">
+</head>
+<body>
+	<div id="container">
+		<header class="hide_during_overlay">
+			<h1>Slack Lightbox</h1>
+			<noscript><p>Your JavaScript is currently disabled.  To use this site, you must enable JavaScript in your browser.</p></noscript>
+			<form id="flickr_form" novalidate>
+				<label for="flickr_search_term">Search for images by keyword:</label>
+				<div class="input-group">
+					<input id="flickr_search_term" class="hide_during_overlay" type="url" placeholder="e.g. San Francisco..." autocomplete="false" />
+					<div class="input-group-btn">
+						<button id="submit_button" type="button">Get Photos</button>
+					</div>
+				</div>
+			</form>
+		</header>
+		<main>
+			<div id="loading" class="hidden hide_during_overlay">
+				<div class='uil-flickr-css' style='transform:scale(0.4);' aria-hidden="true"><div></div><div></div></div>
+				<span class="sr-only">Please wait while we look for images that match your keyword.</span>
+			</div>
+			<div id="error" class="hidden hide_during_overlay">Oops... we're having a technical problem.  It's possible that flickr.com is having an outage, or that they've changed their API... or that there's a bug in this application.  Please try again or contact <a href="mailto:gdoolittle@gmail.com">gdoolittle@gmail.com</a>.</div>
+			<p id="results_description" class="hidden hide_during_overlay">Flickr images that match <strong id="flickr_search_results"></strong></p>
+			<div id="photos_container" class="hidden hide_during_overlay"></div>
+			<div id="overlay_container" class="hidden" tabindex="-1" role="dialog" aria-label="Zoomed in Image">
+				<div class="button_holder">
+					<button id="button_previous" tabindex="-1"><span aria-hidden="true"><</span><span class="sr-only">Previous Image Detail</span></button>
+				</div>
+				<figure id="image_figure" tabindex="-1">
+					<img id="image_detail" alt="" />				
+					<figcaption id="image_detail_title"></figcaption>
+				</figure>
+				<div class="button_holder">
+					<button id="button_next" tabindex="-1"><span aria-hidden="true">></span><span class="sr-only">Next Image Detail</span></button>
+				</div>
+				<div id="close_overlay" class="button_holder" tabindex="-1">
+					<button><span aria-hidden="true">+</span><span class="sr-only">Close Image Detail</span></button>	
+				</div>
+			</div>
+		</main>
+		<footer class="hide_during_overlay">&copy;2016 Greg Doolittle</footer>
+	</div>
+	<div id="status" class="sr-only" role="status" aria-live="polite"></div>
+	<script src="./scripts.js"></script>
+	<script>
+		(function() {
+			SlackLightbox.init();
+		})();
+	</script>
+</body>
+</html>
+
+
+<!--
+flickr API info:
+my key: 2bdb859b00f2c22861d7d107412b7437
+my secret: 46b8a5322ac7f9fd
+-->

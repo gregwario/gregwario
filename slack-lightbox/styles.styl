@@ -1,0 +1,305 @@
+$black = #333
+$white = #fff
+$gray = #888
+
+// i "borrowed" some slack-ish colors from your logo, #sorrynotsorry
+$button-bg = #3dba91
+$button-bg-hover = #19957e
+$button-bg-click = darken(#19957e, 10)
+
+flex()
+	display -webkit-box
+	display -moz-box
+	display -ms-flexbox
+	display -webkit-flex
+	display flex
+* 
+	box-sizing border-box
+
+h1, p, form, button, img, footer, figure
+	font-family sans-serif
+
+html,body
+	color $black
+	background $white
+	padding 0
+	margin 0
+	font-size 18px
+	line-height 1.4rem
+
+h1
+	margin 0
+	font-size 2rem
+
+form 
+	border-collapse 0
+	margin-top .4em
+
+	label, input, button
+		font-size 1rem
+
+	label
+		display inline-block
+		margin-bottom .4em
+
+	/* had a 1px bug in firefox with the flickr button group, i "borrowed" a fix from bootstrap, annotated below */
+	.input-group
+		position relative /* stolen from bootstrap */
+		display table /* stolen from bootstrap */
+		border-collapse separate /* stolen from bootstrap */
+
+	.input-group-btn
+		position relative /* stolen from bootstrap */
+		font-size 0 /* stolen from bootstrap */
+		white-space nowrap /* stolen from bootstrap */
+		vertical-align middle /* stolen from bootstrap */
+		display table-cell /* stolen from bootstrap */
+		width 1% /* stolen from bootstrap */
+
+
+	input, button
+		margin 0 
+		border 0
+		height 2em
+		padding .4em .8em
+		vertical-align 0
+		border 1px solid $button-bg-hover
+
+	input
+		display table-cell /* stolen from bootstrap */
+		position relative /* stolen from bootstrap */
+		top 1px /* stolen from bootstrap */
+		float left /* stolen from bootstrap */
+		border-top-left-radius .2em
+		border-bottom-left-radius .2em
+		border-right 0
+
+		position relative
+		z-index 2
+		float left
+		width 100%
+		margin-bottom 0
+
+	button
+		position relative /* stolen from bootstrap */
+		display inline-block /* stolen from bootstrap */
+		top 1px  /* stolen from bootstrap */
+		z-index 2 /* stolen from bootstrap */
+		border-left 0
+		background $button-bg
+		color $white
+		border-top-right-radius .2em
+		border-bottom-right-radius .2em
+
+		&:hover
+			background $button-bg-hover
+
+		&:active
+			background $button-bg-click 
+
+#container
+	width 900px
+	margin 0 auto
+	padding 20px
+	box-sizing border-box
+	overflow hidden
+
+	.uil-flickr-css
+		margin 0 auto
+
+	#loading, #error
+		&.hidden
+			display none
+
+#photos_container
+	flex()
+	align-items center
+	justify-content center
+	flex-wrap wrap
+
+	button
+		background $white 
+		border 0
+		height 172px
+		width 172px
+		transition 400ms background ease-in-out
+		box-sizing border-box
+		margin 0
+		padding 0 
+		border 1px solid $white
+
+		&:hover, &:focus 
+			z-index 2
+			background $button-bg
+			border 1px solid $button-bg-hover
+
+		img
+			max-height 96%
+			max-width 96%
+
+#overlay_container
+	position fixed
+	top 0
+	right 0
+	bottom 0
+	left 0
+	width 100%
+	height 100%
+	overflow hidden
+	background rgba($white, .75)
+	-webkit-backdrop-filter saturate(180%) blur(20px)
+	backdrop-filter saturate(180%) blur(20px)
+	flex()
+	flex-direction row
+	align-items center
+	justify-content space-between
+	transition 400ms opacity ease-in-out, 400ms visibility ease-in-out, 400ms display ease-in-out
+	visibility visible
+	opacity 1
+	z-index 3
+
+	figure 
+		max-height 90%
+		max-width 90%
+		text-align center
+		/*flex()*/
+		/*flex-direction row*/
+		/*align-items center */
+		/*justify-content center*/
+
+		figcaption
+			margin 0 auto
+			width 100%
+			background rgba($white, .5)
+			font-size .8rem
+			text-align center
+			padding .4rem .2rem
+
+		img
+			/*flex-shrink 1*/
+			max-height 90%
+			max-width 90%
+
+	&.hidden, 
+	/.hidden
+		/*display none*/
+		visibility hidden
+		opacity 0
+
+	#image_detail
+		max-width 100%
+		max-height 100%
+		margin 0 auto
+		align-self center
+		-webkit-align-self center
+		flex-shrink 1
+		flex-grow 1
+		flex-basis 1 1 0%
+		/*webkit-fill-available
+		flex-basis -moz-available
+		flex-basis fill*/
+
+	.button_holder 
+		padding 30px
+		flex-shrink 0
+
+		&:nth-child(2)
+			background red
+
+		&:nth-child(2)
+			text-align right
+			/*align-self flex-end*/
+
+	#close_overlay
+		position absolute
+		top 0
+		right 0
+		transform rotate(45deg)
+
+		button
+			color $black
+			background transparent
+
+			&:hover 
+				background rgba($black, .1)
+
+	button
+		background $button-bg
+		color $white
+		text-align center
+		border 0
+		border-radius 50%
+		display inline-block
+		font-size 1.2rem
+		width 40px
+		height 40px
+		z-index 4
+		
+		&:active
+			background $button-bg-click
+		
+		&:hover, &:focus
+			background $button-bg-hover
+
+button:hover
+	cursor pointer
+
+footer
+	position fixed
+	bottom 0
+	padding 20px 0
+
+@media screen and (max-width: 900px)
+
+	#container
+		width 100%
+
+	#photos_container button
+		display block
+		width 100%
+		margin 5px 0
+
+	#overlay_container
+		max-height 100%
+		max-width 100%	
+
+		.button_holder 
+			position relative
+			bottom 0
+			padding 5px
+			float left
+
+	form 
+		label, input, button
+			font-size .8rem
+
+		label
+			display inline-block
+			margin-bottom .4em
+
+		input, button
+			border-radius 4px
+
+		input, button, .input-group, .input-group-button
+			display block
+
+		input
+			width 100%
+			border 1px solid $button-bg-click
+			border-radius 4px
+
+		button
+			float right
+			margin-top .4rem
+			border 1px solid $button-bg-click
+
+/* the entire .sr-only class below was taken from bootstrap. this provides a way to insert additional text for screenreaders */
+.sr-only
+	position absolute
+	width 1px
+	height 1px
+	margin -1px
+	padding 0
+	overflow hidden
+	clip rect(0, 0, 0, 0)
+	border 0

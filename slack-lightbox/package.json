@@ -1,0 +1,15 @@
+{
+  "name": "slack-lightbo",
+  "version": "1.0.0",
+  "description": "a small coding challenge",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "stylus -w styles.styl -o styles.css"
+  },
+  "author": "Greg Doolittle",
+  "license": "ISC",
+  "devDependencies": {
+    "stylus": "^0.54.5"
+  }
+}
